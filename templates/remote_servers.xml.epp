@@ -1,0 +1,31 @@
+<yandex>
+  <remote_servers>
+<% $remote_servers.each |$server, $shard| { -%>
+    <<%= $server %>>
+<% $shard.each |$config| { -%>
+      <shard>
+<% $config.each |$k, $v| { -%>
+<% if $k == 'weight' or $k == 'internal_replication' { -%>
+        <<%= $k %>><%= $v %></<%= $k %>>
+<% } -%>
+<% if $k == 'replica' { -%>
+<% $v.each |$replica| { -%>
+        <replica>
+          <host><%= split($replica, /:/)[0] %></host>
+          <port><%= split($replica, /:/)[1] %></port>
+<% if $config['replication_user'] { -%>
+          <user><%= $config['replication_user'] %></user>
+<% } -%>
+<% if $config['replication_password'] { -%>
+          <password><%= $config['replication_password'] %></password>
+<% } -%>
+        </replica>
+<% } -%>
+<% } -%>
+<% } -%>
+      </shard>
+<% } -%>
+    </<%= $server %>>
+<% } -%>
+  </remote_servers>
+</yandex>

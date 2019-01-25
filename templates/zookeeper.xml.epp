@@ -1,0 +1,10 @@
+<yandex>
+  <zookeeper>
+<% $zookeeper_servers.each |$idx, $server| { -%>
+    <node index="<%= $idx + 1 %>">
+      <host><%= split($server, /:/)[0] %></host>
+      <port><%= split($server, /:/)[1] %></port>
+    </node>
+<% } -%>
+  </zookeeper>
+</yandex>

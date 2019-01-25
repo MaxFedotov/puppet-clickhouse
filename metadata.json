@@ -1,0 +1,63 @@
+{
+  "name": "mfedotov-clickhouse",
+  "version": "0.1.0",
+  "author": "Max Fedotov",
+  "summary": "Installs, configures and manages Clickhouse server and client",
+  "license": "Apache-2.0",
+  "source": "https://github.com/MaxFedotov/puppet-clickhouse.git",
+  "project_page": "https://github.com/MaxFedotov/puppet-clickhouse",
+  "issues_url": "https://github.com/MaxFedotov/puppet-clickhouse/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.20.0 <5.2.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "1.8.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates.git",
+  "template-ref": "1.8.0-0-g0d9da00"
+}

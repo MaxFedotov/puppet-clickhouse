@@ -1,0 +1,31 @@
+<yandex>
+  <users>
+    <<%= $user %>>
+<% if $password { -%>
+      <password_sha256_hex><%= $password %></password_sha256_hex>
+<% } -%>
+<% if $quota { -%>
+      <quota><%= $quota %></quota>
+<% } -%>
+<% if $profile { -%>
+      <profile><%= $profile %></profile>
+<% } -%>
+<% if $allow_databases { -%>
+      <allow_databases>
+<% $allow_databases.each |$database| { -%>
+        <database><%= $database %></database>
+<% } -%>
+      </allow_databases>
+<% } -%>
+<% if $networks { -%>
+      <networks>
+<% $networks.each |$k, $v| { -%>
+<% $v.each |$vii| { -%>
+        <<%= $k %>><%= $vii %></<%= $k %>>
+<% } -%>
+<% } -%>
+      </networks>
+<% } -%>
+    </<%= $user %>>
+  </users>
+</yandex>
