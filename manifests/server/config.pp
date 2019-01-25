@@ -40,7 +40,10 @@ class clickhouse::server::config {
 
     if !($clickhouse::server::keep_default_users) {
       file { '/etc/clickhouse-server/users.xml':
-        ensure => absent,
+        content => "<yandex>\r\n\t<users>\r\n\t</users>\r\n</yandex>\r\n",
+        mode    => '0664',
+        owner   => $clickhouse::server::clickhouse_user,
+        group   => $clickhouse::server::clickhouse_group,
       }
     }
 
