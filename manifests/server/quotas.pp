@@ -8,7 +8,7 @@ define clickhouse::server::quotas(
   Stdlib::Unixpath $quotas_file                               = $clickhouse::server::quotas_file,
   String $quotas_file_owner                                   = $clickhouse::server::clickhouse_user,
   String $quotas_file_group                                   = $clickhouse::server::clickhouse_group,
-  String $ensure                                              = 'present',
+  Enum['present', 'absent'] $ensure                           = 'present',
   Hash[String, Hash[String, Array[Hash[String,Any]]]] $quotas = {},
 ) {
 

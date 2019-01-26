@@ -24,7 +24,8 @@ class clickhouse::repo {
     'RedHat': {
       yumrepo { 'clickhouse-altinity':
         name     => 'clickhouse-altinity',
-        baseurl  => "https://packagecloud.io/altinity/clickhouse/el/${facts['os']['release']['major']}/\$basearch",
+        descr    => 'Altinity clickhouse repository',
+        baseurl  => "https://packagecloud.io/altinity/clickhouse/el/\$releasever/\$basearch",
         enabled  => 1,
         gpgcheck => 0,
         gpgkey   => 'https://packagecloud.io/altinity/clickhouse/gpgkey',

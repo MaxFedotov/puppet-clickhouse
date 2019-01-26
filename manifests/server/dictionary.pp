@@ -5,11 +5,11 @@
 # @example
 #   clickhouse::server::dictionary { 'namevar': }
 define clickhouse::server::dictionary(
-  Stdlib::Unixpath $dict_dir = $clickhouse::server::dict_dir,
-  String $dict_file_owner    = $clickhouse::server::clickhouse_user,
-  String $dict_file_group    = $clickhouse::server::clickhouse_group,
-  String $ensure             = 'present',
-  String $source             = "${clickhouse::server::dict_source_folder}/${title}",
+  Stdlib::Unixpath $dict_dir        = $clickhouse::server::dict_dir,
+  String $dict_file_owner           = $clickhouse::server::clickhouse_user,
+  String $dict_file_group           = $clickhouse::server::clickhouse_group,
+  Enum['present', 'absent'] $ensure = 'present',
+  String $source                    = "${clickhouse::server::dict_source_folder}/${title}",
 ) {
 
   file { "${dict_dir}/${title}":

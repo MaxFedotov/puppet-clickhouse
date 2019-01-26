@@ -13,7 +13,7 @@ define clickhouse::server::user(
   Stdlib::Unixpath $users_dir                         = $clickhouse::server::users_dir,
   String $user_file_owner                             = $clickhouse::server::clickhouse_user,
   String $user_file_group                             = $clickhouse::server::clickhouse_group,
-  String $ensure                                      = 'present',
+  Enum['present', 'absent'] $ensure                   = 'present',
 ) {
 
   file { "${users_dir}/${title}.xml":

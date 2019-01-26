@@ -8,7 +8,7 @@ define clickhouse::server::profiles(
   Stdlib::Unixpath $profiles_file           = $clickhouse::server::profiles_file,
   String $profiles_file_owner               = $clickhouse::server::clickhouse_user,
   String $profiles_file_group               = $clickhouse::server::clickhouse_group,
-  String $ensure                            = 'present',
+  Enum['present', 'absent'] $ensure         = 'present',
   Hash[String, Hash[String, Any]] $profiles = {},
 ) {
 

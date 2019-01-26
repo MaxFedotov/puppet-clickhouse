@@ -8,7 +8,7 @@ define clickhouse::server::remote_servers(
   Stdlib::Unixpath $remote_servers_file                 = $clickhouse::server::remote_servers_file,
   String $remote_servers_file_owner                     = $clickhouse::server::clickhouse_user,
   String $remote_servers_file_group                     = $clickhouse::server::clickhouse_group,
-  String $ensure                                        = 'present',
+  Enum['present', 'absent'] $ensure                     = 'present',
   Clickhouse::Clickhouse_remote_servers $remote_servers = {},
 ) {
 

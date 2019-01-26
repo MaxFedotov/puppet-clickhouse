@@ -5,11 +5,11 @@
 # @example
 #   clickhouse::server::macros { 'namevar': }
 define clickhouse::server::macros(
-  Stdlib::Unixpath $macros_file = $clickhouse::server::macros_file,
-  String $macros_file_owner     = $clickhouse::server::clickhouse_user,
-  String $macros_file_group     = $clickhouse::server::clickhouse_group,
-  String $ensure                = 'present',
-  Hash[String, Any] $macros     = {},
+  Stdlib::Unixpath $macros_file     = $clickhouse::server::macros_file,
+  String $macros_file_owner         = $clickhouse::server::clickhouse_user,
+  String $macros_file_group         = $clickhouse::server::clickhouse_group,
+  Enum['present', 'absent'] $ensure = 'present',
+  Hash[String, Any] $macros         = {},
 ) {
 
   file { $macros_file:
