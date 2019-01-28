@@ -46,11 +46,12 @@ define clickhouse::server::user(
   String $user_file_group                             = $clickhouse::server::clickhouse_group,
   Enum['present', 'absent'] $ensure                   = 'present',
 ) {
-
-  if $password =~ '%r{[A-Fa-f0-9]{64}$}' {
-    $real_password = $password
-  } else {
-    $real_password = sha256($password)
+  if $password {
+    if $password =~ '%r{[A-Fa-f0-9]{64}$}' {
+      $real_password = $password
+    } else {
+      $real_password = sha256($password)
+    }
   }
 
   file { "${users_dir}/${title}.xml":
