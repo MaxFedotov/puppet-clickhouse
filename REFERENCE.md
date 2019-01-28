@@ -78,7 +78,8 @@ Default value: $clickhouse::params::client_package_name
 
 Data type: `String`
 
-Whether the Clickhouse client package should be present, absent or specific version. Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
+Whether the Clickhouse client package should be present, absent or specific version.
+Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
 
 Default value: $clickhouse::params::client_package_ensure
 
@@ -149,7 +150,8 @@ Default value: $clickhouse::params::package_name
 
 Data type: `String`
 
-Whether the Clickhouse Server package should be present, absent or specific version. Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
+Whether the Clickhouse Server package should be present, absent or specific version.
+Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
 
 Default value: $clickhouse::params::package_ensure
 
@@ -621,7 +623,7 @@ https://clickhouse.yandex/docs/en/operations/quotas/
 
 #### Examples
 
-##### Create two quotas (web with two intervals, office with one), which will be stored in /etc/clickhouse-server/users.d/quotas.xml file.
+##### Create two quotas (web with two intervals, office with one).
 
 ```puppet
 clickhouse::server::quotas { 'quotas.xml':

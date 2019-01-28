@@ -12,7 +12,8 @@
 # @param package_name
 #   Name of Clickhouse Server package to install. Defaults to 'clickhouse-server'.
 # @param package_ensure
-#   Whether the Clickhouse Server package should be present, absent or specific version. Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
+#   Whether the Clickhouse Server package should be present, absent or specific version. 
+#   Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
 # @param manage_package
 #   Whether to manage Clickhouse Server package. Defaults to 'true'.
 # @param package_install_options

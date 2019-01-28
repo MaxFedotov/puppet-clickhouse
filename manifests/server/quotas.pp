@@ -3,7 +3,7 @@
 #
 # @see https://clickhouse.yandex/docs/en/operations/quotas/
 #
-# @example Create two quotas (web with two intervals, office with one), which will be stored in  /etc/clickhouse-server/users.d/quotas.xml file.
+# @example Create two quotas (web with two intervals, office with one).
 #   clickhouse::server::quotas { 'quotas.xml': 
 #     config_dir   => '/etc/clickhouse-server/users.d',
 #     quotas => {

@@ -12,17 +12,14 @@ class clickhouse::server::config {
     $purge = true
   }
 
-  file { [ $clickhouse::server::clickhouse_datadir, 
-           $clickhouse::server::clickhouse_tmpdir ]:
+  file { [ $clickhouse::server::clickhouse_datadir, $clickhouse::server::clickhouse_tmpdir ]:
       ensure => 'directory',
       mode   => '0664',
       owner  => $clickhouse::server::clickhouse_user,
       group  => $clickhouse::server::clickhouse_group,
   }
 
-  file { [ $clickhouse::server::config_dir, 
-           $clickhouse::server::users_dir, 
-           $clickhouse::server::dict_dir ]:
+  file { [ $clickhouse::server::config_dir, $clickhouse::server::users_dir, $clickhouse::server::dict_dir ]:
       ensure  => 'directory',
       mode    => '0664',
       owner   => $clickhouse::server::clickhouse_user,

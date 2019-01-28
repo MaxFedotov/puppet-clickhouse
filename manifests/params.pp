@@ -37,12 +37,12 @@ class clickhouse::params {
                             'tmp_path'               => $clickhouse_tmpdir,
   }
   $keep_default_users    = true
-  $config_file           = "config.xml"
-  $profiles_file         = "profiles.xml"
-  $quotas_file           = "quotas.xml"
-  $macros_file           = "macros.xml"
-  $zookeeper_config_file = "zookeeper.xml"
-  $remote_servers_file   = "remote_servers.xml"
+  $config_file           = 'config.xml'
+  $profiles_file         = 'profiles.xml'
+  $quotas_file           = 'quotas.xml'
+  $macros_file           = 'macros.xml'
+  $zookeeper_config_file = 'zookeeper.xml'
+  $remote_servers_file   = 'remote_servers.xml'
   $dict_source_folder    = "puppet:///modules/${module_name}"
   $install_client        = true
 
