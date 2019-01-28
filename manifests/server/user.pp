@@ -16,6 +16,12 @@ define clickhouse::server::user(
   Enum['present', 'absent'] $ensure                   = 'present',
 ) {
 
+  if $password =~ '%r{[A-Fa-f0-9]{64}$}' {
+    $real_password = $password
+  } else {
+    $real_password = sha256($password)
+  }
+
   file { "${users_dir}/${title}.xml":
     ensure  => $ensure,
     owner   => $user_file_owner,
@@ -23,7 +29,7 @@ define clickhouse::server::user(
     mode    => '0664',
     content => epp("${module_name}/user.xml.epp", {
       'user'            => $title,
-      'password'        => clickhouse_password($password),
+      'password'        => $real_password,
       'quota'           => $quota,
       'profile'         => $profile,
       'allow_databases' => $allow_databases,

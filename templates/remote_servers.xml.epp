@@ -2,7 +2,7 @@
   <remote_servers>
 <% $remote_servers.each |$server, $shard| { -%>
     <<%= $server %>>
-<% $shard.each |$config| { -%>
+<% $shard.each |$shard_name,$config| { -%>
       <shard>
 <% $config.each |$k, $v| { -%>
 <% if $k == 'weight' or $k == 'internal_replication' { -%>

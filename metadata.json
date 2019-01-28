@@ -1,6 +1,6 @@
 {
   "name": "mfedotov-clickhouse",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Max Fedotov",
   "summary": "Installs, configures and manages Clickhouse server and client",
   "license": "Apache-2.0",
