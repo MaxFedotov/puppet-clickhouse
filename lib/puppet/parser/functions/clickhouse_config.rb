@@ -1,4 +1,4 @@
-require 'gyoku'
+require 'xmlsimple'
 module Puppet::Parser::Functions
   newfunction(:clickhouse_config, type: :rvalue, doc: <<-EOS
     @summary
@@ -18,6 +18,6 @@ module Puppet::Parser::Functions
         end
     end
 
-    Gyoku.xml( {yandex: args[0]}, pretty_print: true)
+    XmlSimple.xml_out(args[0], {"RootName" => "yandex", "AttrPrefix" => true})
   end
 end
