@@ -1,9 +1,40 @@
-# A description of what this defined type does
+# @summary
+#   Create and manage Clickhouse user.
 #
-# @summary A short summary of the purpose of this defined type.
+# @see https://clickhouse.yandex/docs/en/operations/access_rights/
 #
-# @example
-#   clickhouse::server::user { 'namevar': }
+# @example Create Clickhouse user.
+#   clickhouse::server::user { 'alice': 
+#     password        => 'HelloAlice',
+#     quota           => 'default',
+#     profile         => 'default',
+#     allow_databases => ['web', 'data'],
+#     networks        => {
+#       ip => ['::/0'],
+#     },
+#   }
+#
+# @param name
+#   Name of the Clickhouse user. Will be also used as a file name for user configuration file in $users_dir folder.
+# @param password
+#   Password for Clickhouse user. Can be specified in plaintext (and later hashed using sha256) or in sha256 format.
+# @param quota
+#   Name of the quota for user.
+# @param profile
+#   Name of the profile for user.
+# @param allow_databases
+#   Array of databases, the user will have permissions to access.
+# @param networks
+#   Clickhouse::Clickhouse_networks (see types/clickhouse_networks.pp) Restrictions for ip\hosts for user.
+# @param users_dir
+#   Path to directory, where user configuration will be stored. Defaults to '/etc/clickhouse-server/users.d/'
+# @param user_file_owner
+#   Owner of the user file. Defaults to 'clickhouse'.
+# @param user_file_group
+#   Group of the user file. Defaults to 'clickhouse'.
+# @param ensure
+#   Specifies whether to create user. Valid values are 'present', 'absent'. Defaults to 'present'.
+#
 define clickhouse::server::user(
   Optional[String] $password                          = undef,
   String $quota                                       = 'default',

@@ -1,6 +1,6 @@
 {
   "name": "mfedotov-clickhouse",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Max Fedotov",
   "summary": "Installs, configures and manages Clickhouse server and client",
   "license": "Apache-2.0",
@@ -21,19 +21,7 @@
       ]
     },
     {
-      "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "Scientific",
       "operatingsystemrelease": [
         "7"
       ]

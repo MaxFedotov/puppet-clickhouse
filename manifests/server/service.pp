@@ -1,5 +1,5 @@
 # @summary 
-#   Private class for managing the Clickhouse service
+#   Private class for managing the Clickhouse service.
 #
 # @api private
 #
@@ -18,7 +18,7 @@ class clickhouse::server::service {
     }
 
     if $clickhouse::server::manage_config {
-      File[$clickhouse::server::config_file] -> Service[$clickhouse::server::service_name]
+      File["${clickhouse::server::config_dir}/${clickhouse::server::config_file}"] -> Service[$clickhouse::server::service_name]
     }
 
   }

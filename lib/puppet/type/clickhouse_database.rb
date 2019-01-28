@@ -1,9 +1,10 @@
 Puppet::Type.newtype(:clickhouse_database) do
     @doc = <<-PUPPET
       @summary
-        Manage a Clickhouse database.
+        Manages a Clickhouse database.
+      @param [namevar] Database name.
+      @param [ensure] Specifies whether to create database in Clickhouse. Valid values are 'present', 'absent'. Defaults to 'present'.
   
-      @api private
     PUPPET
   
     ensurable

@@ -2,9 +2,9 @@ require 'xmlsimple'
 module Puppet::Parser::Functions
   newfunction(:clickhouse_config, type: :rvalue, doc: <<-EOS
     @summary
-      Convert hash to Clickhouse xml config
-    @param [Hash] Hash of setting for Clickhouse.
-    @return [Xml] the Clickhouse xml configuration.
+      Convert hash to Clickhouse XML config.
+    @param [Hash] Settings for Clickhouse Server.
+    @return [Xml] Сlickhouse XML configuration.
     EOS
     ) do |args|
 

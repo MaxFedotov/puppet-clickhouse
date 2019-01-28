@@ -1,9 +1,23 @@
-# A description of what this class does
+# @summary
+#   Installs and configures Clickhouse client.
 #
-# @summary A short summary of the purpose of this class
+# @example Install Clickhouse client
+#   class { 'clickhouse::client':
+#     package_name   => 'clickhouse-client',
+#     package_ensure => 'present',
+#   }
 #
-# @example
-#   include clickhouse::client
+# @param manage_repo
+#   Whether to install Clickhouse repository. Defaults to 'true'.
+# @param package_name
+#   Name of Clickhouse client package to install. Defaults to 'clickhouse-client'.
+# @param package_ensure
+#   Whether the Clickhouse client package should be present, absent or specific version. Valid values are 'present', 'absent' or 'x.y.z'. Defaults to 'present'.
+# @param manage_package
+#   Whether to manage Clickhouse client package. Defaults to 'true'.
+# @param package_install_options
+#   Array of install options for managed package resources. Appropriate options are passed to package manager.
+#
 class clickhouse::client (
   Boolean $manage_repo                   = $clickhouse::params::manage_repo,
   String $package_name                   = $clickhouse::params::client_package_name,

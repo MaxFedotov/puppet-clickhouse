@@ -1,9 +1,26 @@
-# A description of what this defined type does
+# @summary 
+#   Create and manage Clickhouse dictionary.
 #
-# @summary A short summary of the purpose of this defined type.
+# @see https://clickhouse.yandex/docs/en/query_language/dicts/external_dicts/
 #
-# @example
-#   clickhouse::server::dictionary { 'namevar': }
+# @example Create a basic Clickhouse dictionary:
+#   clickhouse::server::dictionary { 'countries.xml': 
+#     source => 'puppet:///modules/clickhouse/dictionaries',
+#   }
+#
+# @param name
+#   Name of the dictionary file in the $source and $dict_dir folders.
+# @param dict_dir
+#   Path to folder with clickhouse dictionaries. Defaults to '/etc/clickhouse-server/dict'.
+# @param dict_file_owner
+#   Owner of the dictionary file. Defaults to 'clickhouse'.
+# @param dict_file_group
+#   Group of the dictionary file. Defaults to 'clickhouse'.
+# @param ensure
+#   Specifies whether to create dictionary. Valid values are 'present', 'absent'. Defaults to 'present'.
+# @param source
+#   Path to a 'files' folder in puppet, where dictionary file are located. Defaults to 'puppet:///modules/${module_name}'.
+#
 define clickhouse::server::dictionary(
   Stdlib::Unixpath $dict_dir        = $clickhouse::server::dict_dir,
   String $dict_file_owner           = $clickhouse::server::clickhouse_user,

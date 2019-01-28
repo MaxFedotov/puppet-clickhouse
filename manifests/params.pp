@@ -1,9 +1,8 @@
-# A description of what this class does
+# @summary
+#   Private class for setting default Clickhouse parameters.
 #
-# @summary A short summary of the purpose of this class
+# @api private
 #
-# @example
-#   include clickhouse::params
 class clickhouse::params {
 
 # Repository
@@ -38,12 +37,12 @@ class clickhouse::params {
                             'tmp_path'               => $clickhouse_tmpdir,
   }
   $keep_default_users    = true
-  $config_file           = "${config_dir}/config.xml"
-  $profiles_file         = "${users_dir}/profiles.xml"
-  $quotas_file           = "${users_dir}/quotas.xml"
-  $macros_file           = "${config_dir}/macros.xml"
-  $zookeeper_config_file = "${config_dir}/zookeeper.xml"
-  $remote_servers_file   = "${config_dir}/remote_servers.xml"
+  $config_file           = "config.xml"
+  $profiles_file         = "profiles.xml"
+  $quotas_file           = "quotas.xml"
+  $macros_file           = "macros.xml"
+  $zookeeper_config_file = "zookeeper.xml"
+  $remote_servers_file   = "remote_servers.xml"
   $dict_source_folder    = "puppet:///modules/${module_name}"
   $install_client        = true
 
