@@ -16,4 +16,17 @@ RSpec.configure do |c|
       on(host, "sed -i '/nodocs/d' /etc/yum.conf")
     end
   end
+  if fact('osfamily') == 'Debian'
+    c.filter_run_excluding skip_run: true
+  end
+end
+
+shared_examples 'a idempotent resource' do
+  it 'applies with no errors' do
+    apply_manifest(pp, catch_failures: true)
+  end
+
+  it 'applies a second time without changes', :skip_run do
+    apply_manifest(pp, catch_changes: true)
+  end
 end
