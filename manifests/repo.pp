@@ -11,9 +11,9 @@ class clickhouse::repo {
     }
     'Debian': {
       apt::source { 'clickhouse-yandex':
-        name     => 'clickhouse-yandex',
-        location => 'http://repo.yandex.ru/clickhouse/deb/stable',
+        location => 'http://repo.yandex.ru/clickhouse/deb/stable/',
         release  => 'main/',
+        repos    => '',
         key      => {
           id     => '9EBB357BC2B0876A774500C7C8F1E19FE0C56BD4',
           server => 'hkp://keyserver.ubuntu.com:80',

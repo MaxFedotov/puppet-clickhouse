@@ -18,8 +18,9 @@ describe 'clickhouse::repo' do
     it {
       is_expected.to contain_apt__source('clickhouse-yandex').with(
         name: 'clickhouse-yandex',
-        location: 'http://repo.yandex.ru/clickhouse/deb/stable',
+        location: 'http://repo.yandex.ru/clickhouse/deb/stable/',
         release: 'main/',
+        repos: '',
       )
     }
   end

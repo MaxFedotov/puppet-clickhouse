@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/MaxFedotov/puppet-clickhouse.svg?branch=master)](https://travis-ci.org/MaxFedotov/puppet-clickhouse)
+
 # clickhouse
 
 #### Table of Contents
