@@ -56,11 +56,11 @@
 #   Quotas configuraion.
 #
 define clickhouse::server::quotas(
-  Stdlib::Unixpath $users_dir                                     = $clickhouse::server::users_dir,
-  String $quotas_file_owner                                       = $clickhouse::server::clickhouse_user,
-  String $quotas_file_group                                       = $clickhouse::server::clickhouse_group,
-  Enum['present', 'absent'] $ensure                               = 'present',
-  Hash[String, Hash[String, Array[Hash[String,Integer]]]] $quotas = {},
+  Stdlib::Unixpath $users_dir           = $clickhouse::server::users_dir,
+  String $quotas_file_owner             = $clickhouse::server::clickhouse_user,
+  String $quotas_file_group             = $clickhouse::server::clickhouse_group,
+  Enum['present', 'absent'] $ensure     = 'present',
+  Clickhouse::Clickhouse_quotas $quotas = {},
 ) {
 
   file { "${users_dir}/${title}":

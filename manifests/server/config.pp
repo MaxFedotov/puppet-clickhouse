@@ -5,11 +5,22 @@
 #
 class clickhouse::server::config {
 
-  $options = $clickhouse::server::options
+  $default_options = {
+    'listen_host'            => '::',
+    'dictionaries_config'    => "${clickhouse::server::dict_dir}/*.xml",
+    'max_table_size_to_drop' => 0,
+    'path'                   => $clickhouse::server::clickhouse_datadir,
+    'tmp_path'               => $clickhouse::server::clickhouse_tmpdir,
+  }
+
+  $options = $default_options.deep_merge($clickhouse::server::override_options)
 
   if $clickhouse::server::manage_config {
     $recurse = true
     $purge = true
+  } else {
+    $recurse = false
+    $purge = false
   }
 
   file { [ $clickhouse::server::clickhouse_datadir, $clickhouse::server::clickhouse_tmpdir ]:
@@ -53,7 +64,7 @@ class clickhouse::server::config {
         content => epp("${module_name}/zookeeper.xml.epp", {
           'zookeeper_servers' => $clickhouse::server::replication['zookeeper_servers'],
         }),
-        require => File[$clickhouse::server::users_dir],
+        require => File[$clickhouse::server::config_dir],
       }
     }
   }

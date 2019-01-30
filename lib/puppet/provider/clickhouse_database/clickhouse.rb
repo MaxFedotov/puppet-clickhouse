@@ -24,7 +24,7 @@ Puppet::Type.type(:clickhouse_database).provide(:clickhouse, parent: Puppet::Pro
   def create
     self.class.clickhouse_caller("create database if not exists `#{@resource[:name]}`")
 
-    @property_hash[:ensure]  = :present
+    @property_hash[:ensure] = :present
 
     exists? ? (return true) : (return false)
   end
@@ -41,5 +41,4 @@ Puppet::Type.type(:clickhouse_database).provide(:clickhouse, parent: Puppet::Pro
   end
 
   mk_resource_methods
-
 end

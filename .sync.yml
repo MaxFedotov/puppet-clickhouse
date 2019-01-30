@@ -1,0 +1,5 @@
+---
+Gemfile:
+  required:
+    ':dependencies':
+      - gem: xml-simple

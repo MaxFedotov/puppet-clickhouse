@@ -373,7 +373,7 @@ Default value: `undef`
 
 ##### `quotas`
 
-Data type: `Optional[Hash[String, Hash[String, Array[Hash[String,Integer]]]]]`
+Data type: `Optional[Clickhouse::Clickhouse_quotas]`
 
 Quotas configuration, which are passed to clickhouse::server::quotas. See https://clickhouse.yandex/docs/en/operations/quotas/.
 
@@ -707,7 +707,7 @@ Default value: 'present'
 
 ##### `quotas`
 
-Data type: `Hash[String, Hash[String, Array[Hash[String,Integer]]]]`
+Data type: `Clickhouse::Clickhouse_quotas`
 
 Quotas configuraion.
 

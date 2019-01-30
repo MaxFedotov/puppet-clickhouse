@@ -47,11 +47,13 @@ define clickhouse::server::user(
   Enum['present', 'absent'] $ensure                   = 'present',
 ) {
   if $password {
-    if $password =~ '%r{[A-Fa-f0-9]{64}$}' {
+    if $password =~ /[A-Fa-f0-9]{64}/ {
       $real_password = $password
     } else {
       $real_password = sha256($password)
     }
+  } else {
+    $real_password = undef
   }
 
   file { "${users_dir}/${title}.xml":

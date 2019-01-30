@@ -41,4 +41,17 @@ def ensure_module_defined(module_name)
   end
 end
 
+RSpec.configure do |c|
+  c.after(:suite) do
+    RSpec::Puppet::Coverage.report!(95)
+  end
+end
+
+RSpec.configure do |conf|
+  conf.before(:each) do
+    Puppet::Util::Log.level = :debug
+    Puppet::Util::Log.newdestination(:console)
+  end
+end
+
 # 'spec_overrides' from sync.yml will appear below this line

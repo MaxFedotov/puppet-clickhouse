@@ -5,7 +5,9 @@
 #
 class clickhouse::server::resources {
 
-  create_resources(clickhouse::server::user, $clickhouse::server::users)
+  if $clickhouse::server::users {
+    create_resources(clickhouse::server::user, $clickhouse::server::users)
+  }
 
   if $clickhouse::server::profiles {
     clickhouse::server::profiles { $clickhouse::server::profiles_file:
@@ -15,7 +17,7 @@ class clickhouse::server::resources {
 
   if $clickhouse::server::quotas {
     clickhouse::server::quotas { $clickhouse::server::quotas_file:
-      quotas  => $clickhouse::server::quotas,
+      quotas => $clickhouse::server::quotas,
     }
   }
 
@@ -28,14 +30,14 @@ class clickhouse::server::resources {
   if $clickhouse::server::replication {
     if $clickhouse::server::replication['macros'] {
       clickhouse::server::macros { $clickhouse::server::macros_file:
-        macros  => $clickhouse::server::replication['macros'],
+        macros => $clickhouse::server::replication['macros'],
       }
     }
   }
 
   if $clickhouse::server::remote_servers {
     clickhouse::server::remote_servers { $clickhouse::server::remote_servers_file:
-      remote_servers => $clickhouse::server::remote_servers ,
+      remote_servers => $clickhouse::server::remote_servers,
     }
   }
 

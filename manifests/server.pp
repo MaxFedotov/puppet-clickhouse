@@ -117,20 +117,20 @@ class clickhouse::server (
 # Additional configuration
   Optional[Clickhouse::Clickhouse_users] $users                             = undef,
   Optional[Hash[String, Hash[String, Any]]] $profiles                       = undef,
-  Optional[Hash[String, Hash[String, Array[Hash[String,Integer]]]]] $quotas = undef,
+  Optional[Clickhouse::Clickhouse_quotas] $quotas = undef,
   Optional[Array[String]] $dictionaries                                     = undef,
   Optional[Clickhouse::Clickhouse_replication] $replication                 = undef,
   Optional[Clickhouse::Clickhouse_remote_servers] $remote_servers           = undef,
 ) inherits clickhouse::params {
-
-  $options = $clickhouse::params::default_options.deep_merge($override_options)
 
   if $manage_repo {
     include clickhouse::repo
   }
 
   if $install_client {
-    include clickhouse::client
+    class { 'clickhouse::client':
+      manage_repo => $manage_repo,
+    }
   }
 
   if $restart {

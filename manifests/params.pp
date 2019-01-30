@@ -29,13 +29,6 @@ class clickhouse::params {
   $clickhouse_group      = 'clickhouse'
   $clickhouse_datadir    = '/var/lib/clickhouse/'
   $clickhouse_tmpdir     = '/var/lib/clickhouse/tmp/'
-  $default_options       = {
-                            'listen_host'            => '::',
-                            'dictionaries_config'    => "${dict_dir}/*.xml",
-                            'max_table_size_to_drop' => 0,
-                            'path'                   => $clickhouse_datadir,
-                            'tmp_path'               => $clickhouse_tmpdir,
-  }
   $keep_default_users    = true
   $config_file           = 'config.xml'
   $profiles_file         = 'profiles.xml'
