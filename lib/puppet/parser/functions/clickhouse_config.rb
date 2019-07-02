@@ -4,7 +4,7 @@ module Puppet::Parser::Functions
     @summary
       Convert hash to Clickhouse XML config.
     @param [Hash] Settings for Clickhouse Server.
-    @return [Xml] Сlickhouse XML configuration.
+    @return [Xml] Clickhouse XML configuration.
     EOS
              ) do |args|
 
