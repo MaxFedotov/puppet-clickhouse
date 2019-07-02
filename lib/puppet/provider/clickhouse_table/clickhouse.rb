@@ -1,11 +1,11 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'clickhouse'))
-Puppet::Type.type(:clickhouse_database).provide(:clickhouse, parent: Puppet::Provider::Clickhouse) do
-  desc 'Manages Clickhouse databases.'
+Puppet::Type.type(:clickhouse_table).provide(:clickhouse, parent: Puppet::Provider::Clickhouse) do
+  desc 'Manages Clickhouse table.'
 
   commands clickhouse_raw: 'clickhouse-client'
 
   def self.instances
-    clickhouse_caller('show databases').split("\n").map do |name|
+    clickhouse_caller('show tables').split("\n").map do |name|
       new(name: name,
           ensure: :present)
     end
@@ -22,7 +22,10 @@ Puppet::Type.type(:clickhouse_database).provide(:clickhouse, parent: Puppet::Pro
   end
 
   def create
-    self.class.clickhouse_caller("create database if not exists #{@resource[:name]}")
+    partition = if defined? (@resource[:partition]) then "partition by #{@resource[:partition]}" else "" end
+    order = if defined? (@resource[:order]) then "order by (#{@resource[:order].join(', ')})" else "" end
+    self.class.clickhouse_caller("create table if not exists #{@resource[:name]} (#{@resource[:types].join(', ')}) engine = #{@resource[:engine]} #{partition} #{order}")
+
 
     @property_hash[:ensure] = :present
 
@@ -30,7 +33,7 @@ Puppet::Type.type(:clickhouse_database).provide(:clickhouse, parent: Puppet::Pro
   end
 
   def destroy
-    self.class.clickhouse_caller("drop database if exists #{@resource[:name]}")
+    self.class.clickhouse_caller("drop table if exists #{@resource[:name]}")
 
     @property_hash.clear
     exists? ? (return false) : (return true)
