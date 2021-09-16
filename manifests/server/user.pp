@@ -37,6 +37,7 @@
 #
 define clickhouse::server::user(
   Optional[String] $password                          = undef,
+  Optional[Integer] $access_management                = undef,
   String $quota                                       = 'default',
   String $profile                                     = 'default',
   Optional[Array[String]] $allow_databases            = undef,
@@ -62,12 +63,13 @@ define clickhouse::server::user(
     group   => $user_file_group,
     mode    => '0664',
     content => epp("${module_name}/user.xml.epp", {
-      'user'            => $title,
-      'password'        => $real_password,
-      'quota'           => $quota,
-      'profile'         => $profile,
-      'allow_databases' => $allow_databases,
-      'networks'        => $networks,
+      'user'              => $title,
+      'password'          => $real_password,
+      'access_management' => $access_management,
+      'quota'             => $quota,
+      'profile'           => $profile,
+      'allow_databases'   => $allow_databases,
+      'networks'          => $networks,
     }),
   }
 

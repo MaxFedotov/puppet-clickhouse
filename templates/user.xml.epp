@@ -4,6 +4,9 @@
 <% if $password { -%>
       <password_sha256_hex><%= $password %></password_sha256_hex>
 <% } -%>
+<% if $access_management { -%>
+      <access_management><%=$access_management%></access_management>
+<% } -%>
 <% if $quota { -%>
       <quota><%= $quota %></quota>
 <% } -%>
