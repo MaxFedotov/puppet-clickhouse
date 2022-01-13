@@ -10,6 +10,6 @@ class Puppet::Provider::Clickhouse < Puppet::Provider
   commands :clickhouse_raw => 'clickhouse-client'
 
   def self.clickhouse_caller(text_of_sql)
-    clickhouse_raw(['-c', '/root/.clickhouse-client/config.xml', '-q', text_of_sql].flatten.compact)
+    clickhouse_raw(['-c', '/etc/clickhouse-client/config.xml', '-q', text_of_sql].flatten.compact)
   end
 end
